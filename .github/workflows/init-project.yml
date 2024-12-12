@@ -92,6 +92,7 @@ jobs:
           DOCKER_USERNAME: 'robot$lens-local-glenn-project-76b2b10936+imageuser'
           DOCKER_PASSWORD: '${{ secrets.DOCKER_PASSWORD }}'
           PROJECT_PUBLIC_ID: '76b2b10936'
+          DEPLOYMENT_ENDPOINT: 'https:&#x2F;&#x2F;finer-classic-stork.ngrok-free.app&#x2F;p&#x2F;api&#x2F;deploy'
           FULL_IMAGE_WITH_TAG: '${{ env.DOCKER_METADATA_OUTPUT_TAGS }}'
           POD_NAME: '${{ env.IMAGE_NAME }}'
           DEBUG: 1
@@ -101,7 +102,7 @@ jobs:
           set +e  # revert the default `set -e` which github actions enable automatically
           cd "$(dirname "$0")"
 
-          curl https:&#x2F;&#x2F;finer-classic-stork.ngrok-free.app&#x2F;p&#x2F;api&#x2F;deploy -X POST -H "Content-Type: application/json" -d '{"project_public_id": "'$PROJECT_PUBLIC_ID'", "image": "'$FULL_IMAGE_WITH_TAG'", "pod_name": "'$POD_NAME'", "docker_server": "'$DOCKER_SERVER'", "docker_username": "'$DOCKER_USERNAME'", "docker_password": "'$DOCKER_PASSWORD'"}'
+          curl "${DEPLOYMENT_ENDPOINT}" -X POST -H "Content-Type: application/json" -d '{"project_public_id": "'$PROJECT_PUBLIC_ID'", "image": "'$FULL_IMAGE_WITH_TAG'", "pod_name": "'$POD_NAME'", "docker_server": "'$DOCKER_SERVER'", "docker_username": "'$DOCKER_USERNAME'", "docker_password": "'$DOCKER_PASSWORD'"}'
 
           #main() {
           #  setCluster || return 1
