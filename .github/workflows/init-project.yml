@@ -92,7 +92,7 @@ jobs:
           DOCKER_USERNAME: 'robot$lens-local-glenn-project-76b2b10936+imageuser'
           DOCKER_PASSWORD: '${{ secrets.DOCKER_PASSWORD }}'
           PROJECT_PUBLIC_ID: '76b2b10936'
-          DEPLOYMENT_ENDPOINT: 'https:&#x2F;&#x2F;finer-classic-stork.ngrok-free.app&#x2F;p&#x2F;api&#x2F;deploy'
+          DEPLOYMENT_ENDPOINT: 'https://finer-classic-stork.ngrok-free.app/p/api/deploy'
           FULL_IMAGE_WITH_TAG: '${{ env.DOCKER_METADATA_OUTPUT_TAGS }}'
           POD_NAME: '${{ env.IMAGE_NAME }}'
           DEBUG: 1
